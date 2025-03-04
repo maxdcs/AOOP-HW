@@ -1,35 +1,43 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:assignment1.ViewModels"
+        xmlns:conv="clr-namespace:assignment1.Converters"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d"
         x:Class="assignment1.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="assignment1">
 
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
+  <Window.Resources>
+    <!-- Register the converter for converting "0"/"1" to brushes -->
+    <conv:ZeroOneToColorConverter x:Key="ZeroOneToColorConverter"/>
+  </Window.Resources>
 
-    <Window.Resources>
-        <!-- Define two SolidColorBrush resources for colors -->
-        <SolidColorBrush x:Key="WhiteTile" Color="White"/>
-        <SolidColorBrush x:Key="BlackTile" Color="Black"/>
-    </Window.Resources>
+  <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+    <TextBlock Text="{Binding Values}" 
+             HorizontalAlignment="Center" 
+             Margin="0,0,0,20"/>
+    <UniformGrid Rows="{Binding Y}" Columns="{Binding X}">
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="{Binding Y}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Text="{Binding X}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Text="{Binding Values}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <UniformGrid Rows="{Binding Y}" Columns="{Binding X}">
-          <Button Content="{Binding Values[0]}"
-          Background="{Binding Values[0], Converter={StaticResource ZeroOneToColorConverter}}"
-          Command="{Binding ToggleValueCommand}" />
-        </UniformGrid>
-    </StackPanel>
-
+      <Button Content="{Binding Values[0]}"
+              Background="{Binding Values[0], Converter={StaticResource ZeroOneToColorConverter}}"
+              Command="{Binding ToggleValueCommand}"
+              CommandParameter="0"/>
+      <Button Content="{Binding Values[1]}"
+              Background="{Binding Values[1], Converter={StaticResource ZeroOneToColorConverter}}"
+              Command="{Binding ToggleValueCommand}"
+              CommandParameter="1"/>
+      <Button Content="{Binding Values[2]}"
+              Background="{Binding Values[2], Converter={StaticResource ZeroOneToColorConverter}}"
+              Command="{Binding ToggleValueCommand}"
+              CommandParameter="2"/>
+      <Button Content="{Binding Values[3]}"
+              Background="{Binding Values[3], Converter={StaticResource ZeroOneToColorConverter}}"
+              Command="{Binding ToggleValueCommand}"
+              CommandParameter="3"/>
+      <!-- Add additional buttons as needed -->
+    </UniformGrid>
+  </StackPanel>
 </Window>
