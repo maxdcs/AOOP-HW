@@ -15,6 +15,12 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+    <!-- test -->
+        <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding Testik}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding Item}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding Item2}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </StackPanel>
 
 </Window>
