@@ -15,10 +15,21 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
+    <Window.Resources>
+        <!-- Define two SolidColorBrush resources for colors -->
+        <SolidColorBrush x:Key="WhiteTile" Color="White"/>
+        <SolidColorBrush x:Key="BlackTile" Color="Black"/>
+    </Window.Resources>
+
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-      <TextBlock Text="{Binding Y}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-      <TextBlock Text="{Binding X}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-      <TextBlock Text="{Binding values}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding Y}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding X}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding Values}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <UniformGrid Rows="{Binding Y}" Columns="{Binding X}">
+          <Button Content="{Binding Values[0]}"
+          Background="{Binding Values[0], Converter={StaticResource ZeroOneToColorConverter}}"
+          Command="{Binding ToggleValueCommand}" />
+        </UniformGrid>
     </StackPanel>
 
 </Window>

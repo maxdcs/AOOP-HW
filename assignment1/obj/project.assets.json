@@ -1474,19 +1474,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nedba\\.nuget\\packages\\": {}
+    "/Users/maksymdrzyzgiewicz/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nedba\\OneDrive\\Documents\\cs-projects\\S2\\AOOP-HW\\assignment1\\assignment1.csproj",
+      "projectUniqueName": "/Users/maksymdrzyzgiewicz/Desktop/repos/AOOP/Homework/AOOP-HW/assignment1/assignment1.csproj",
       "projectName": "assignment1",
-      "projectPath": "C:\\Users\\nedba\\OneDrive\\Documents\\cs-projects\\S2\\AOOP-HW\\assignment1\\assignment1.csproj",
-      "packagesPath": "C:\\Users\\nedba\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nedba\\OneDrive\\Documents\\cs-projects\\S2\\AOOP-HW\\assignment1\\obj\\",
+      "projectPath": "/Users/maksymdrzyzgiewicz/Desktop/repos/AOOP/Homework/AOOP-HW/assignment1/assignment1.csproj",
+      "packagesPath": "/Users/maksymdrzyzgiewicz/.nuget/packages/",
+      "outputPath": "/Users/maksymdrzyzgiewicz/Desktop/repos/AOOP/Homework/AOOP-HW/assignment1/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\nedba\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/maksymdrzyzgiewicz/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -1510,7 +1510,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net9.0": {
@@ -1557,7 +1557,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
