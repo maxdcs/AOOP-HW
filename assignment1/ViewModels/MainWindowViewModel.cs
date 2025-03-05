@@ -14,7 +14,8 @@ namespace assignment1.ViewModels
         public int Y { get; }
 
         private string _values = string.Empty;
-        public string Testik { get; } = "ASDASDASDAS";
+        public string DimensionsText => $"size: {X}x{Y}";
+
 
         public string Values
         {

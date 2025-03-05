@@ -3,11 +3,20 @@
         xmlns:vm="clr-namespace:assignment1.ViewModels" 
         x:Class="assignment1.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Title="Button Grid Example" Width="600" Height="400">
+        Title="Button Grid Example" Width="600" Height="500" Background="White">
 
-    <StackPanel>
-        <Grid x:Name="ButtonContainer" />
-        <TextBlock Text="{Binding Values}" Width="200" Height="30" Margin="10"/>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+<TextBlock Text="{Binding DimensionsText}" HorizontalAlignment="Center" Margin="10" Foreground="Black"/>
+        <Border BorderBrush="Black" BorderThickness="2" Margin="20">
+            <Grid x:Name="ButtonContainer" HorizontalAlignment="Center" />
+        </Border>       
+         
+         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <Button Content="load" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" BorderBrush="Black" BorderThickness="2"/>
+                <Button Content="save" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" BorderBrush="Black" BorderThickness="2"/>
+        </StackPanel>
+
+
     </StackPanel>
 
 </Window>

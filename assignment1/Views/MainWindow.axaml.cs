@@ -58,10 +58,15 @@ namespace assignment1.Views
 
                 var button = new Button
                 {
-                    Content = _viewModel.Values[i].ToString(),
-                    Margin = new Avalonia.Thickness(1),
+                    // Content = _viewModel.Values[i].ToString(),
+                    Margin = new Avalonia.Thickness(0),
                     Command = _viewModel.ToggleValueCommand,
-                    CommandParameter = i // Pass the index as the parameter
+                    CommandParameter = i, // Pass the index as the parameter
+                    Background = _viewModel.Values[i].ToString() == "0" ? Avalonia.Media.Brushes.White : Avalonia.Media.Brushes.Black, // Set the background color to black
+                    BorderThickness = new Avalonia.Thickness(0), // Optional: Border thickness
+                    CornerRadius = new Avalonia.CornerRadius(0), // No border radius
+                    Width = 50, // Set the width of the button (e.g., 100px)
+                    Height = 50 // Set the height of the button (e.g., 100px)
                 };
 
                 // Set the button's row and column
