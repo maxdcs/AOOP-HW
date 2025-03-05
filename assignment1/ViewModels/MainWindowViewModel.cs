@@ -11,6 +11,8 @@ namespace assignment1.ViewModels
         public int X { get; private set; }
         public int Y { get; private set; }
 
+        public string InputFile { get; set; } = "smile";
+
         private string _values = string.Empty;
         public string DimensionsText => X > 0 && Y > 0 ? $"size: {X}x{Y}" : "No file loaded";
 
@@ -78,12 +80,14 @@ namespace assignment1.ViewModels
             // Initialize Flip command
             FlipValuesCommand = new RelayCommand(_ => FlipValues());
 
+            InputText = "smile";
             LoadFile();
         }
 
         private void LoadFile()
         {
-            string filePath = "./Models/smile.b2img.txt";
+            InputFile = InputText;
+            string filePath = "./Models/" + InputFile + ".b2img.txt";
 
             if (!File.Exists(filePath))
             {
