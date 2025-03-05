@@ -26,6 +26,10 @@
             <Button Content="Save" HorizontalAlignment="Center" VerticalAlignment="Center" 
                     Foreground="Black" BorderBrush="Black" BorderThickness="2"
                     Command="{Binding SaveFileCommand}"/>
+
+            <Button Content="Flip" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Foreground="Black" BorderBrush="Black" BorderThickness="2"
+                    Command="{Binding FlipValuesCommand}"/>
         </StackPanel>
     </StackPanel>
 
