@@ -39,5 +39,7 @@
               CommandParameter="3"/>
       <!-- Add additional buttons as needed -->
     </UniformGrid>
+
+    <TextBlock Text="{Binding Testik}" HorizontalAlignment="Center"/>
   </StackPanel>
 </Window>
