@@ -1,6 +1,9 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Input;
+using Avalonia.Controls;
+using Avalonia.Interactivity;
 
 namespace assignment1.ViewModels
 {
@@ -17,28 +20,30 @@ namespace assignment1.ViewModels
             set => SetProperty(ref _values, value);
         }
 
-        // Command expects a parameter (the index to toggle)
         public ICommand ToggleValueCommand { get; }
 
         public MainWindowViewModel()
         {
             // Read dimensions and values from file
             string[] lines = File.ReadAllLines("./Models/smile.b2img.txt");
-            string[] splitWords = lines[0].Split(' ');
-            X = Convert.ToInt32(splitWords[0]);
-            Y = Convert.ToInt32(splitWords[1]);
-            Values = lines[1];
 
-            // Command uses the parameter (index) to toggle the appropriate character
+            if (lines.Length < 2)
+                throw new Exception("Invalid file format: expected at least two lines.");
+
+            string[] splitWords = lines[0].Split(' ');
+            if (splitWords.Length < 2)
+                throw new Exception("Invalid file format: expected two integers in the first line.");
+
+            X = Convert.ToInt32(splitWords[0]); // Amount of lines
+            Y = Convert.ToInt32(splitWords[1]); // Amount of columns
+            Values = lines[1]; // 1's and 0's
+
+            // Initialize the command with a lambda that passes the index to ToggleValue
             ToggleValueCommand = new RelayCommand(param =>
             {
-                if (param is string s && int.TryParse(s, out int index))
+                if (param is int index)
                 {
                     ToggleValue(index);
-                }
-                else if (param is int indexInt)
-                {
-                    ToggleValue(indexInt);
                 }
             });
         }
@@ -47,9 +52,11 @@ namespace assignment1.ViewModels
         {
             if (string.IsNullOrEmpty(Values) || index < 0 || index >= Values.Length)
                 return;
+
             char current = Values[index];
             char toggled = current == '0' ? '1' : '0';
-            // Create a new char array from the string, update the character, then assign a new string
+
+            // Update the character in the string
             char[] chars = Values.ToCharArray();
             chars[index] = toggled;
             Values = new string(chars);

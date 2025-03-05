@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mattveym/Documents/repos/c_sharp/semester2/AOOP-HW/assignment1/assignment1.csproj": {}
+    "C:\\Users\\nedba\\OneDrive\\Documents\\cs-projects\\S2\\AOOP-HW\\assignment1\\assignment1.csproj": {}
   },
   "projects": {
-    "/Users/mattveym/Documents/repos/c_sharp/semester2/AOOP-HW/assignment1/assignment1.csproj": {
+    "C:\\Users\\nedba\\OneDrive\\Documents\\cs-projects\\S2\\AOOP-HW\\assignment1\\assignment1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mattveym/Documents/repos/c_sharp/semester2/AOOP-HW/assignment1/assignment1.csproj",
+        "projectUniqueName": "C:\\Users\\nedba\\OneDrive\\Documents\\cs-projects\\S2\\AOOP-HW\\assignment1\\assignment1.csproj",
         "projectName": "assignment1",
-        "projectPath": "/Users/mattveym/Documents/repos/c_sharp/semester2/AOOP-HW/assignment1/assignment1.csproj",
-        "packagesPath": "/Users/mattveym/.nuget/packages/",
-        "outputPath": "/Users/mattveym/Documents/repos/c_sharp/semester2/AOOP-HW/assignment1/obj/",
+        "projectPath": "C:\\Users\\nedba\\OneDrive\\Documents\\cs-projects\\S2\\AOOP-HW\\assignment1\\assignment1.csproj",
+        "packagesPath": "C:\\Users\\nedba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nedba\\OneDrive\\Documents\\cs-projects\\S2\\AOOP-HW\\assignment1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/mattveym/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\nedba\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -85,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
