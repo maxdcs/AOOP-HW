@@ -6,17 +6,27 @@
         Title="Button Grid Example" Width="600" Height="500" Background="White">
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-<TextBlock Text="{Binding DimensionsText}" HorizontalAlignment="Center" Margin="10" Foreground="Black"/>
+        <!-- Display dimensions -->
+        <TextBlock Text="{Binding DimensionsText}" HorizontalAlignment="Center" Margin="10" Foreground="Black"/>
+        
         <Border BorderBrush="Black" BorderThickness="2" Margin="20">
             <Grid x:Name="ButtonContainer" HorizontalAlignment="Center" />
         </Border>       
-         
-         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                <Button Content="load" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" BorderBrush="Black" BorderThickness="2"/>
-                <Button Content="save" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" BorderBrush="Black" BorderThickness="2"/>
+
+        <!-- Input TextBox -->
+        <TextBox Text="{Binding InputText, UpdateSourceTrigger=PropertyChanged}" Width="200" Height="30"/>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <!-- Load Button -->
+            <Button Content="Load" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Foreground="Black" BorderBrush="Black" BorderThickness="2"
+                    Command="{Binding LoadFileCommand}"/>
+                    
+            <!-- Save Button -->
+            <Button Content="Save" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Foreground="Black" BorderBrush="Black" BorderThickness="2"
+                    Command="{Binding SaveFileCommand}"/>
         </StackPanel>
-
-
     </StackPanel>
 
 </Window>

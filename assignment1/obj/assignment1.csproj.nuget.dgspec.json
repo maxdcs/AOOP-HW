@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mattveym/Documents/repos/c_sharp/semester2/AOOP-HW/assignment1/assignment1.csproj": {}
+    "/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment1/assignment1.csproj": {}
   },
   "projects": {
-    "/Users/mattveym/Documents/repos/c_sharp/semester2/AOOP-HW/assignment1/assignment1.csproj": {
+    "/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment1/assignment1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mattveym/Documents/repos/c_sharp/semester2/AOOP-HW/assignment1/assignment1.csproj",
+        "projectUniqueName": "/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment1/assignment1.csproj",
         "projectName": "assignment1",
-        "projectPath": "/Users/mattveym/Documents/repos/c_sharp/semester2/AOOP-HW/assignment1/assignment1.csproj",
-        "packagesPath": "/Users/mattveym/.nuget/packages/",
-        "outputPath": "/Users/mattveym/Documents/repos/c_sharp/semester2/AOOP-HW/assignment1/obj/",
+        "projectPath": "/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment1/assignment1.csproj",
+        "packagesPath": "/Users/maksymdrzyzgiewicz/.nuget/packages/",
+        "outputPath": "/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment1/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/mattveym/.nuget/NuGet/NuGet.Config"
+          "/Users/maksymdrzyzgiewicz/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
