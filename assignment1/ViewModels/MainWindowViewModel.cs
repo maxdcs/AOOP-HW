@@ -77,6 +77,8 @@ namespace assignment1.ViewModels
 
             // Initialize Flip command
             FlipValuesCommand = new RelayCommand(_ => FlipValues());
+
+            LoadFile();
         }
 
         private void LoadFile()
