@@ -17,6 +17,5 @@
 
     <StackPanel>
       <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-      <TextBlock Text="{Binding FirstTeacher.CreatedSubjects[0].Name}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </StackPanel>
 </Window>

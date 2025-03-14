@@ -66,6 +66,3 @@
 /Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/obj/Debug/net9.0/assignme.5E4AEB52.Up2Date
 /Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/obj/Debug/net9.0/assignment2.genruntimeconfig.cache
 /Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/obj/Debug/net9.0/ref/assignment2.dll
-/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/obj/Debug/net9.0/assignment2.dll
-/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/obj/Debug/net9.0/refint/assignment2.dll
-/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/obj/Debug/net9.0/assignment2.pdb
