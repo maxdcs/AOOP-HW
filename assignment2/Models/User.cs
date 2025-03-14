@@ -7,6 +7,7 @@ namespace assignment2.Models;
 
 public abstract class User
 {
+  public Guid Id { get; protected set; }
   public string? Name { get; }
   public string? Username { get; }
   public string? Role { get; }
@@ -14,6 +15,7 @@ public abstract class User
 
   public User(string? name, string? username, string? password, string? role)
   {
+    Id = Guid.NewGuid();
     Name = name;
     Username = username;
     Password = password;

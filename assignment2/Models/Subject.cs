@@ -7,13 +7,13 @@ namespace assignment2.Models;
 
 public class Subject{
   
-  public int? Id;
+  public Guid? Id;
   public string? Name { get; set; }
   public string? Description { get; set; }
-  public int? teacherId { get; set; }
-  public List<Student>? studentsEnrolled {get; set;}
+  public Guid? teacherId { get; set; }
+  public List<Guid>? studentsEnrolled {get; set;}= [];
 
-  public Subject(int Id, string Name, string Description, int teacherId){
-    List<Student> studentsEnrolled = [];
+  public Subject(string Name, string Description, Guid teacherId){
+    Id = Guid.NewGuid();
   }
 }
