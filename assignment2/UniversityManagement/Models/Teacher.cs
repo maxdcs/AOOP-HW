@@ -7,8 +7,8 @@ namespace UniversityManagement.Models;
 
 public class Teacher : User
 {
-    public Teacher(string? name, string? username, string? password, string? role) : base(name, username, password, role)
+    public Teacher(string? name, string? username, string? password) : base(name, username, password, "Teacher")
     {
-        role = "Teacher";
+
     }
 }

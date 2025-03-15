@@ -11,11 +11,15 @@ public class Subject
   public Guid? Id;
   public string? Name { get; set; }
   public string? Description { get; set; }
-  public Guid? teacherId { get; set; }
-  public List<Guid>? studentsEnrolled { get; set; } = [];
+  public Guid? TeacherId { get; set; }
+  public List<Guid>? StudentsEnrolled { get; set; } = [];
 
-  public Subject(string Name, string Description, Guid teacherId)
+  public Subject(string name, string description, Guid teacherId)
   {
     Id = Guid.NewGuid();
+    this.Name = name;
+    this.Description = description;
+    this.TeacherId = teacherId;
+
   }
 }

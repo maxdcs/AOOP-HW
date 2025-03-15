@@ -12,7 +12,7 @@ public class SubjectManager
 
   public List<Subject> GetCreatedSubjectsByTeacherId(Guid teacherId)
   {
-    return subjectList.FindAll(subject => subject.teacherId != null && subject.teacherId == teacherId);
+    return subjectList.FindAll(subject => subject.TeacherId != null && subject.TeacherId == teacherId);
   }
 
   public void CreateNewSubject(string name, string description, Guid teacherId)
@@ -43,25 +43,25 @@ public class SubjectManager
   public void EnrollStudentInNewSubjectId(Guid studentId, Guid subjectId)
   {
     var subject = subjectList.FirstOrDefault(subject => subject.Id == subjectId);
-    if (subject != null && subject.studentsEnrolled != null)
+    if (subject != null && subject.StudentsEnrolled != null)
     {
-      subject.studentsEnrolled.Add(studentId);
+      subject.StudentsEnrolled.Add(studentId);
     }
   }
 
   public void RemoveSubjectFromStudentsRepertoir(Guid studentId, Guid subjectId)
   {
     var subject = subjectList.FirstOrDefault(subject => subject.Id == subjectId);
-    if (subject != null && subject.studentsEnrolled != null)
+    if (subject != null && subject.StudentsEnrolled != null)
     {
-      subject.studentsEnrolled.Remove(studentId);
+      subject.StudentsEnrolled.Remove(studentId);
     }
   }
 
   // Get all of user's subjects by Id
   public List<Subject> GetEnrolledSubjectsByStudentId(Guid studentId)
   {
-    return subjectList.FindAll(subject => subject.studentsEnrolled != null && subject.studentsEnrolled.Contains(studentId));
+    return subjectList.FindAll(subject => subject.StudentsEnrolled != null && subject.StudentsEnrolled.Contains(studentId));
 
   }
 
