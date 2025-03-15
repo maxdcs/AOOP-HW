@@ -10,16 +10,12 @@ public class SubjectManager
   public List<Subject> subjectList = [];
   // ------------------Teacher methods-----------------------------
 
-  public List<Subject> GetCreatedSubjectsByTeacherId(Guid teacherId)
-  {
-    return subjectList.FindAll(subject => subject.TeacherId != null && subject.TeacherId == teacherId);
-  }
 
-  public void CreateNewSubject(string name, string description, Guid teacherId)
+
+  public void CreateAndAddNewSubject(string name, string description, Guid teacherId)
   {
     Subject newSubject = new(name, description, teacherId);
     subjectList.Add(newSubject);
-
   }
 
   public void EditSubjectById(Guid subjectId, string newName, string newDescription)
@@ -39,8 +35,16 @@ public class SubjectManager
 
   }
 
+  public List<Subject> GetCreatedSubjectsByTeacherId(Guid teacherId)
+  {
+    return subjectList.FindAll(subject => subject.TeacherId != null && subject.TeacherId == teacherId);
+  }
+
+
+
+
   // -------------------Student Methods----------------------------
-  public void EnrollStudentInNewSubjectId(Guid studentId, Guid subjectId)
+  public void EnrollStudentInSubjectId(Guid studentId, Guid subjectId)
   {
     var subject = subjectList.FirstOrDefault(subject => subject.Id == subjectId);
     if (subject != null && subject.StudentsEnrolled != null)
@@ -49,7 +53,7 @@ public class SubjectManager
     }
   }
 
-  public void RemoveSubjectFromStudentsRepertoir(Guid studentId, Guid subjectId)
+  public void RemoveSubjectFromStudent(Guid studentId, Guid subjectId)
   {
     var subject = subjectList.FirstOrDefault(subject => subject.Id == subjectId);
     if (subject != null && subject.StudentsEnrolled != null)
@@ -62,7 +66,6 @@ public class SubjectManager
   public List<Subject> GetEnrolledSubjectsByStudentId(Guid studentId)
   {
     return subjectList.FindAll(subject => subject.StudentsEnrolled != null && subject.StudentsEnrolled.Contains(studentId));
-
   }
 
 }

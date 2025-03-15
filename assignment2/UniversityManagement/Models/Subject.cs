@@ -8,7 +8,7 @@ namespace UniversityManagement.Models;
 public class Subject
 {
 
-  public Guid? Id;
+  public Guid Id;
   public string? Name { get; set; }
   public string? Description { get; set; }
   public Guid? TeacherId { get; set; }

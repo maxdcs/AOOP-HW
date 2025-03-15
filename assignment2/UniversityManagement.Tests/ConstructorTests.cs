@@ -30,8 +30,8 @@ public class ConstructorTests
     public void Test_TeacherConstructor()
     {
         // Arrange
-        string teacherName = "Dorthe";
-        string username = "gigapolitician";
+        string teacherName = "Dori";
+        string username = "fish";
         string password = "123";
 
 
@@ -40,7 +40,7 @@ public class ConstructorTests
 
 
         // Assert
-        Assert.Equal("gigapolitician", teacherDorthe.Username);
+        Assert.Equal("fish", teacherDorthe.Username);
     }
 
     [Fact]
