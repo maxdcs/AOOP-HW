@@ -26,3 +26,6 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement/Views/TeacherWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
