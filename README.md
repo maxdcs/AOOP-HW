@@ -29,14 +29,14 @@ dotnet run
 4. Login with provided credentials (Also provided in the login page for easy reference):
    - Teacher: username: `janedoe123`, password: `123`
    - Student: username: `johnsmith`, password: `123`
-
-## Automated Unit Testing & Functional Testing
+# Testing
+## Automated Unit Testing
 
 Automated tests can be run using by navigating to the `assignment2/` folder and running the command:
 ```
 dotnet test
 ```
-# UserManager Tests
+### UserManager Tests
 
 - **Test_GetAllTeachers_ReturnsTeachers**  
   Verifies that the `GetAllTeachers()` method returns only users with a "Teacher" role.
@@ -56,7 +56,7 @@ dotnet test
 - **Test_GetStudentById_ReturnsCorrectStudent**  
   Checks that given a student's ID, the correct student object is returned.
 
-# SubjectManager Tests
+### SubjectManager Tests
 
 - **Test_CreateAndAddNewSubject_AddsSubject**  
   Validates that a new subject is created and added to the subject list when invoking `CreateAndAddNewSubject`.
@@ -80,6 +80,7 @@ dotnet test
   Verifies that `GetEnrolledSubjectsByStudentId` returns the correct subjects in which a student is enrolled.
 
 ---
+## Functional Testing
 
 ### Authentication System
 
