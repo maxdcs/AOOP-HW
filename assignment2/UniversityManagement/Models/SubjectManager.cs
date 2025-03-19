@@ -1,106 +1,111 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-
 using System.Text.Json;
 
-
-namespace UniversityManagement.Models;
-
-public class SubjectManager
+namespace UniversityManagement.Models
 {
-  // JSON deserilize
-
-  public List<Subject> subjectList = [];
-
-  // user list
-  // public List<User> userList = [];
-  // 
-
-
-
-  // ------------------Teacher methods-----------------------------
-
-
-
-  public void CreateAndAddNewSubject(string name, string description, Guid teacherId)
+  public class SubjectManager
   {
-    // maybe we can leaeve out teacherId and just keep current user state in the manager
+    private const string SubjectsFilePath = "Data/subjects.json";
+    public List<Subject> subjectList = [];
 
-    // add item to the list
-    // serilize to json
-    // write
-    Subject newSubject = new(name, description, teacherId);
-    subjectList.Add(newSubject);
-  }
-
-  public void EditSubjectById(Guid subjectId, string newName, string newDescription)
-  {
-    // edit item
-    // serilize to json
-    // write
-    var subject = subjectList.FirstOrDefault(subject => subject.Id == subjectId);
-    if (subject != null)
+    public SubjectManager()
     {
-      subject.Name = newName;
-      subject.Description = newDescription;
+      LoadSubjectsFromFile();
+    }
+
+    private void LoadSubjectsFromFile()
+    {
+      try
+      {
+        if (File.Exists(SubjectsFilePath))
+        {
+          string jsonString = File.ReadAllText(SubjectsFilePath);
+          var subjects = JsonSerializer.Deserialize<List<Subject>>(jsonString);
+          if (subjects != null)
+          {
+            subjectList = subjects;
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine($"Error loading subjects: {ex.Message}");
+      }
+    }
+
+    private void SaveSubjectsToFile()
+    {
+      try
+      {
+        string jsonString = JsonSerializer.Serialize(subjectList, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(SubjectsFilePath, jsonString);
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine($"Error saving subjects: {ex.Message}");
+      }
+    }
+
+    // Modify existing methods to save after changes
+    public void CreateAndAddNewSubject(string name, string description, Guid teacherId)
+    {
+      Subject newSubject = new(name, description, teacherId);
+      subjectList.Add(newSubject);
+      SaveSubjectsToFile(); // Save after adding
+    }
+
+    public void EditSubjectById(Guid subjectId, string newName, string newDescription)
+    {
+      var subject = subjectList.FirstOrDefault(subject => subject.Id == subjectId);
+      if (subject != null)
+      {
+        subject.Name = newName;
+        subject.Description = newDescription;
+        SaveSubjectsToFile(); // Save after editing
+      }
+    }
+
+    public void DeleteSubjectById(Guid subjectId)
+    {
+      subjectList.RemoveAll(subject => subject.Id == subjectId);
+      SaveSubjectsToFile(); // Save after deleting
+    }
+
+    // Update student methods to save changes
+    public void EnrollStudentInSubjectId(Guid studentId, Guid subjectId)
+    {
+      var subject = subjectList.FirstOrDefault(subject => subject.Id == subjectId);
+      if (subject != null && subject.StudentsEnrolled != null)
+      {
+        subject.StudentsEnrolled.Add(studentId);
+        SaveSubjectsToFile(); // Save after enrolling
+      }
+    }
+
+    public void RemoveSubjectFromStudent(Guid studentId, Guid subjectId)
+    {
+      var subject = subjectList.FirstOrDefault(subject => subject.Id == subjectId);
+      if (subject != null && subject.StudentsEnrolled != null)
+      {
+        subject.StudentsEnrolled.Remove(studentId);
+        SaveSubjectsToFile(); // Save after dropping
+      }
+    }
+
+    // Gets subjects created by a specific teacher
+    public List<Subject> GetCreatedSubjectsByTeacherId(Guid teacherId)
+    {
+      return subjectList.FindAll(subject => subject.TeacherId == teacherId);
+    }
+
+    // Gets subjects that a student is enrolled in
+    public List<Subject> GetEnrolledSubjectsByStudentId(Guid studentId)
+    {
+      return subjectList.FindAll(subject => subject.StudentsEnrolled != null &&
+                                           subject.StudentsEnrolled.Contains(studentId));
     }
   }
-
-  public void DeleteSubjectById(Guid subjectId)
-  {
-    // authenticate if the current user is truly a teacher
-
-    // delete subject from list
-    // serilize to json
-    // write
-    subjectList.RemoveAll(subject => subject.Id == subjectId);
-
-  }
-
-  public List<Subject> GetCreatedSubjectsByTeacherId(Guid teacherId)
-  {
-    // maybe we can use a currentID and auth
-
-    return subjectList.FindAll(subject => subject.TeacherId != null && subject.TeacherId == teacherId);
-  }
-
-
-
-
-  // -------------------Student Methods----------------------------
-  public void EnrollStudentInSubjectId(Guid studentId, Guid subjectId)
-  {
-    // current ID?
-
-    // add student id to the subject
-    // serilize to json
-    // write
-    var subject = subjectList.FirstOrDefault(subject => subject.Id == subjectId);
-    if (subject != null && subject.StudentsEnrolled != null)
-    {
-      subject.StudentsEnrolled.Add(studentId);
-    }
-  }
-
-  public void RemoveSubjectFromStudent(Guid studentId, Guid subjectId)
-  {
-    // remove student id to the subject
-    // serilize to json
-    // write
-    var subject = subjectList.FirstOrDefault(subject => subject.Id == subjectId);
-    if (subject != null && subject.StudentsEnrolled != null)
-    {
-      subject.StudentsEnrolled.Remove(studentId);
-    }
-  }
-
-  // Get all of user's subjects by Id
-  public List<Subject> GetEnrolledSubjectsByStudentId(Guid studentId)
-  {
-    // maybe we can use current user or whatever
-    return subjectList.FindAll(subject => subject.StudentsEnrolled != null && subject.StudentsEnrolled.Contains(studentId));
-  }
-
 }

@@ -7,7 +7,7 @@ namespace UniversityManagement.Models;
 
 public abstract class User
 {
-  public Guid Id { get; protected set; }
+  public Guid Id { get; set; }
   public string? Name { get; }
   public string? Username { get; }
   public string? Password { get; }
