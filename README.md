@@ -34,7 +34,7 @@ dotnet run
 
 Automated tests can be run using by navigating to the `assignment2/` folder and running the command:
 ```
-dotnet run
+dotnet test
 ```
 # UserManager Tests
 
