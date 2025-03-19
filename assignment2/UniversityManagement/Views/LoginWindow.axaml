@@ -3,29 +3,57 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="using:UniversityManagement.ViewModels"
-        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
         x:Class="UniversityManagement.Views.LoginWindow"
         x:DataType="vm:LoginWindowViewModel"
         Title="University Management System - Login"
-        Width="400" Height="300"
+        Width="400" Height="700"
         WindowStartupLocation="CenterScreen">
         
     <Border Background="#000000" Padding="20">
-        <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="*,*" Margin="10">
+        <Grid RowDefinitions="Auto,*" ColumnDefinitions="*" Margin="10">
             <!-- Header -->
-            <TextBlock Grid.Row="0" Grid.ColumnSpan="2" 
-                   Text="University Management System" 
-                   FontSize="20" 
-                   FontWeight="Bold"
-                   HorizontalAlignment="Center" 
-                   Margin="0,0,0,20"/>
+            <TextBlock Grid.Row="0"
+                      Text="University Management System" 
+                      FontSize="20" 
+                      FontWeight="Bold"
+                      HorizontalAlignment="Center" 
+                      Margin="0,0,0,20"/>
                    
-            <!-- Login Form -->
-            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" 
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center"
-                        Width="300"
-                        Spacing="15">
+            <!-- Main Content -->
+            <StackPanel Grid.Row="1"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center"
+                       Width="300"
+                       Spacing="15">
+                       
+                <!-- Demo Credentials Box -->
+                <Border BorderBrush="#2980b9" 
+                        BorderThickness="1" 
+                        Background="#2980b930"
+                        CornerRadius="5" 
+                        Padding="15" 
+                        Margin="0,0,0,20">
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="Demo Credentials" 
+                                 FontWeight="Bold" 
+                                 HorizontalAlignment="Center"/>
+                        
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="Teacher Access:" FontWeight="SemiBold"/>
+                            <TextBlock Text="Username: janedoe123" Margin="10,0,0,0"/>
+                            <TextBlock Text="Password: 123" Margin="10,0,0,0"/>
+                        </StackPanel>
+                        
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="Student Access:" FontWeight="SemiBold"/>
+                            <TextBlock Text="Username: johnsmith" Margin="10,0,0,0"/>
+                            <TextBlock Text="Password: 123" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Login Form -->
                 <TextBlock Text="Username:" />
                 <TextBox Text="{Binding Username}" />
                 
@@ -33,8 +61,8 @@
                 <TextBox PasswordChar="•" Text="{Binding Password}" />
                 
                 <TextBlock Text="{Binding ErrorMessage}" 
-                           Foreground="Red"
-                           IsVisible="{Binding ErrorMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+                          Foreground="Red"
+                          IsVisible="{Binding ErrorMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
                            
                 <Button Content="Login" 
                         Command="{Binding LoginCommand}" 
