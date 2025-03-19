@@ -9,7 +9,7 @@ public partial class MainWindowViewModel : ViewModelBase
 {
   public static MainWindowViewModel? Instance { get; private set; }
 
-  public string Greeting { get; } = "Welcome to Avalonia!";
+  public string Greeting { get; } = "Welcome to University Management System!";
 
   [ObservableProperty]
   public SubjectManager subjectManager = new();
@@ -17,24 +17,22 @@ public partial class MainWindowViewModel : ViewModelBase
   [ObservableProperty]
   public Teacher currentTeacher = new Teacher("Jane Doe", "janedoe123", "123");
 
-  // Add this property under the currentTeacher property
   [ObservableProperty]
   public Student currentStudent = new Student("John Smith", "johnsmith", "123");
-
-  [RelayCommand]
-  private void OpenStudentWindow()
-  {
-    new StudentWindow().Show();
-  }
+  
+  // ViewModels for the tabs
+  [ObservableProperty]
+  public TeacherWindowViewModel teacherViewModel;
+  
+  [ObservableProperty]
+  public StudentWindowViewModel studentViewModel;
 
   public MainWindowViewModel()
   {
     Instance = this;
-  }
-
-  [RelayCommand]
-  private void OpenTeacherWindow()
-  {
-    new TeacherWindow().Show();
+    
+    // Create and initialize the view models
+    TeacherViewModel = new TeacherWindowViewModel();
+    StudentViewModel = new StudentWindowViewModel();
   }
 }

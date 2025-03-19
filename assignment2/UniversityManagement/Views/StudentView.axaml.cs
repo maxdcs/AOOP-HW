@@ -5,12 +5,13 @@ using UniversityManagement.ViewModels;
 
 namespace UniversityManagement.Views
 {
-  public partial class StudentWindow : Window
+  public partial class StudentView : UserControl
   {
-    public StudentWindow()
+    public StudentView()
     {
       InitializeComponent();
-      DataContext = new StudentWindowViewModel();
+      // Removed: DataContext = new StudentWindowViewModel();
+      // DataContext now comes from parent binding
     }
 
     private void InitializeComponent()

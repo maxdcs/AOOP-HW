@@ -1,0 +1,101 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:UniversityManagement.ViewModels"
+    x:Class="UniversityManagement.Views.TeacherView"
+    x:DataType="vm:TeacherWindowViewModel">
+
+    <Panel Background="#000000">
+        <!-- Main container with fixed width and centered -->
+        <Grid Margin="30" RowDefinitions="Auto,*">
+            <StackPanel Grid.Row="0" Margin="0,0,0,20">
+                <TextBlock Text="Teacher Dashboard" FontSize="24" FontWeight="Bold"/>
+                <TextBlock Text="{Binding TemplateTeacher.Name}" FontSize="16"/>
+            </StackPanel>
+            
+            <Grid Grid.Row="1" ColumnDefinitions="*,*">
+                <!-- Left Panel: Subject Management -->
+                <DockPanel Grid.Column="0" Margin="0,0,10,0">
+                    <TextBlock DockPanel.Dock="Top" Text="Add New Subject" FontWeight="Bold" Margin="0,0,0,10"/>
+                    
+                    <!-- New Subject Form -->
+                    <Border DockPanel.Dock="Top" 
+                           BorderBrush="Gray" 
+                           BorderThickness="1" 
+                           Padding="15" 
+                           Margin="0,0,0,20"
+                           CornerRadius="5">
+                        <StackPanel Spacing="10">
+                            <TextBlock Text="Subject Name:" />
+                            <TextBox Text="{Binding NewSubjectName}" />
+                            
+                            <TextBlock Text="Description:" />
+                            <TextBox Text="{Binding NewSubjectDescription}" Height="100" TextWrapping="Wrap" AcceptsReturn="True" />
+                            
+                            <Button Content="Add Subject" 
+                                   Command="{Binding AddSubjectCommand}" 
+                                   HorizontalAlignment="Right" />
+                        </StackPanel>
+                    </Border>
+                    
+                    <TextBlock DockPanel.Dock="Top" Text="Your Subjects" FontWeight="Bold" Margin="0,0,0,10"/>
+                    
+                    <!-- Subject List -->
+                    <ListBox ItemsSource="{Binding SubjectList}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" Margin="0,3" CornerRadius="3" Width="550">
+                                    <Grid ColumnDefinitions="*,Auto,Auto">
+                                        <StackPanel Grid.Column="0" Spacing="4">
+                                            <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                            <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Opacity="0.8"/>
+                                        </StackPanel>
+                                        <Button Grid.Column="1" 
+                                               Content="Edit" 
+                                               Command="{Binding Source={x:Static vm:TeacherWindowViewModel.Current}, Path=EditSubjectCommand}" 
+                                               CommandParameter="{Binding}"
+                                               Margin="0,0,5,0"/>
+                                        <Button Grid.Column="2" 
+                                               Content="Delete" 
+                                               Command="{Binding Source={x:Static vm:TeacherWindowViewModel.Current}, Path=DeleteSubjectCommand}" 
+                                               CommandParameter="{Binding}"
+                                               Margin="0,0,0,0"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+                
+                <!-- Right Panel: Edit Panel -->
+                <Border Grid.Column="1" 
+                       BorderBrush="Gray" 
+                       BorderThickness="1" 
+                       Padding="15" 
+                       Margin="10,0,0,0"
+                       CornerRadius="5"
+                       IsVisible="{Binding IsEditingSubject}">
+                    <Grid RowDefinitions="Auto,*,Auto">
+                        <TextBlock Grid.Row="0" Text="Edit Subject" FontWeight="Bold" Margin="0,0,0,10"/>
+                        
+                        <StackPanel Grid.Row="1" Spacing="10">
+                            <TextBlock Text="Subject Name:" />
+                            <TextBox Text="{Binding EditSubjectName}" />
+                            
+                            <TextBlock Text="Description:" />
+                            <TextBox Text="{Binding EditSubjectDescription}" Height="200" TextWrapping="Wrap" AcceptsReturn="True" />
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                            <Button Content="Cancel" 
+                                   Command="{Binding CancelEditCommand}" 
+                                   Margin="0,0,10,0"/>
+                            <Button Content="Save Changes" 
+                                   Command="{Binding SaveSubjectEditCommand}"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Panel>
+</UserControl>
