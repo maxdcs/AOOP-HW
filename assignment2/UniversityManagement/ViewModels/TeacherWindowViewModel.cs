@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using UniversityManagement.Models;
 
 namespace UniversityManagement.ViewModels
@@ -36,6 +37,19 @@ namespace UniversityManagement.ViewModels
 
     [ObservableProperty]
     private bool isEditingSubject = false;
+    
+    // New properties for confirmation messages
+    [ObservableProperty]
+    private string addSubjectMessage = string.Empty;
+
+    [ObservableProperty]
+    private bool showAddSubjectMessage = false;
+
+    [ObservableProperty]
+    private string deleteSubjectMessage = string.Empty;
+
+    [ObservableProperty]
+    private bool showDeleteSubjectMessage = false;
 
     public TeacherWindowViewModel()
     {
@@ -72,6 +86,13 @@ namespace UniversityManagement.ViewModels
         TemplateTeacher.Id
       );
 
+      // Set confirmation message
+      AddSubjectMessage = $"Successfully created subject: {NewSubjectName}!";
+      ShowAddSubjectMessage = true;
+
+      // Hide message after 3 seconds
+      Task.Delay(3000).ContinueWith(_ => ShowAddSubjectMessage = false);
+
       // Refresh the subject list
       LoadSubjects();
 
@@ -86,7 +107,16 @@ namespace UniversityManagement.ViewModels
       if (subject == null || sharedSubjectManager == null)
         return;
 
+      string subjectName = subject.Name ?? "Unknown subject";
+      
       sharedSubjectManager.DeleteSubjectById(subject.Id);
+
+      // Set confirmation message
+      DeleteSubjectMessage = $"Successfully deleted subject: {subjectName}!";
+      ShowDeleteSubjectMessage = true;
+
+      // Hide message after 3 seconds
+      Task.Delay(3000).ContinueWith(_ => ShowDeleteSubjectMessage = false);
 
       // Refresh the subject list
       LoadSubjects();
