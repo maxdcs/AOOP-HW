@@ -2,11 +2,9 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Linq;
 using UniversityManagement.Models;
 
 namespace UniversityManagement.ViewModels
@@ -16,6 +14,8 @@ namespace UniversityManagement.ViewModels
     public static StudentWindowViewModel? Current { get; private set; }
 
     private SubjectManager? sharedSubjectManager;
+    private List<Subject> allAvailableSubjects = new();
+    private List<Subject> allEnrolledSubjects = new();
 
     [ObservableProperty]
     private Student? templateStudent;
@@ -43,8 +43,10 @@ namespace UniversityManagement.ViewModels
 
     [ObservableProperty]
     private bool showDropMessage = false;
-
-
+    
+    // Search functionality
+    [ObservableProperty]
+    private string searchText = string.Empty;
 
     public StudentWindowViewModel()
     {
@@ -65,16 +67,43 @@ namespace UniversityManagement.ViewModels
         return;
 
       // Get enrolled subjects
-      var studentEnrolled = sharedSubjectManager.GetEnrolledSubjectsByStudentId(TemplateStudent.Id);
-      EnrolledSubjects = new ObservableCollection<Subject>(studentEnrolled);
-
+      allEnrolledSubjects = sharedSubjectManager.GetEnrolledSubjectsByStudentId(TemplateStudent.Id);
+      
       // Get all subjects and filter out the ones already enrolled in
-      var enrolledIds = studentEnrolled.Select(s => s.Id).ToHashSet();
-      var available = sharedSubjectManager.subjectList
-                      .Where(s => !enrolledIds.Contains(s.Id))
-                      .ToList();
+      var enrolledIds = allEnrolledSubjects.Select(s => s.Id).ToHashSet();
+      allAvailableSubjects = sharedSubjectManager.subjectList
+                    .Where(s => !enrolledIds.Contains(s.Id))
+                    .ToList();
 
-      AvailableSubjects = new ObservableCollection<Subject>(available);
+      ApplyFilter();
+    }
+    
+    partial void OnSearchTextChanged(string value)
+    {
+      ApplyFilter();
+    }
+    
+    private void ApplyFilter()
+    {
+      if (string.IsNullOrWhiteSpace(SearchText))
+      {
+        // Show all subjects if no search text
+        AvailableSubjects = new ObservableCollection<Subject>(allAvailableSubjects);
+        EnrolledSubjects = new ObservableCollection<Subject>(allEnrolledSubjects);
+        return;
+      }
+      
+      // Filter available subjects
+      var filteredAvailable = allAvailableSubjects
+          .Where(s => s.Name?.Contains(SearchText, StringComparison.OrdinalIgnoreCase) == true)
+          .ToList();
+      AvailableSubjects = new ObservableCollection<Subject>(filteredAvailable);
+      
+      // Filter enrolled subjects
+      var filteredEnrolled = allEnrolledSubjects
+          .Where(s => s.Name?.Contains(SearchText, StringComparison.OrdinalIgnoreCase) == true)
+          .ToList();
+      EnrolledSubjects = new ObservableCollection<Subject>(filteredEnrolled);
     }
 
     [RelayCommand]
@@ -84,11 +113,11 @@ namespace UniversityManagement.ViewModels
         return;
 
       sharedSubjectManager.EnrollStudentInSubjectId(TemplateStudent.Id, subject.Id);
-
+    
       // Set confirmation message
       EnrollmentMessage = $"Successfully enrolled in {subject.Name}!";
       ShowEnrollmentMessage = true;
-
+    
       // Hide message when refreshing subjects or enrolling in another course
       Task.Delay(3000).ContinueWith(_ => ShowEnrollmentMessage = false);
 

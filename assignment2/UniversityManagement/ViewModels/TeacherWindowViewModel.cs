@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Linq;
 using UniversityManagement.Models;
 
 namespace UniversityManagement.ViewModels
@@ -13,6 +14,7 @@ namespace UniversityManagement.ViewModels
     public static TeacherWindowViewModel? Current { get; private set; }
 
     private SubjectManager? sharedSubjectManager;
+    private List<Subject> allTeacherSubjects = new();
 
     [ObservableProperty]
     private Teacher? templateTeacher;
@@ -38,7 +40,7 @@ namespace UniversityManagement.ViewModels
     [ObservableProperty]
     private bool isEditingSubject = false;
     
-    // New properties for confirmation messages
+    // Confirmation messages properties
     [ObservableProperty]
     private string addSubjectMessage = string.Empty;
 
@@ -50,6 +52,10 @@ namespace UniversityManagement.ViewModels
 
     [ObservableProperty]
     private bool showDeleteSubjectMessage = false;
+    
+    // Search functionality
+    [ObservableProperty]
+    private string searchText = string.Empty;
 
     public TeacherWindowViewModel()
     {
@@ -66,8 +72,30 @@ namespace UniversityManagement.ViewModels
 
     private void LoadSubjects()
     {
-      var teacherSubjects = sharedSubjectManager?.GetCreatedSubjectsByTeacherId(TemplateTeacher?.Id ?? Guid.Empty) ?? new List<Subject>();
-      SubjectList = new ObservableCollection<Subject>(teacherSubjects);
+      allTeacherSubjects = sharedSubjectManager?.GetCreatedSubjectsByTeacherId(TemplateTeacher?.Id ?? Guid.Empty) ?? new List<Subject>();
+      ApplyFilter();
+    }
+    
+    partial void OnSearchTextChanged(string value)
+    {
+      ApplyFilter();
+    }
+    
+    private void ApplyFilter()
+    {
+      if (string.IsNullOrWhiteSpace(SearchText))
+      {
+        // Show all subjects if no search text
+        SubjectList = new ObservableCollection<Subject>(allTeacherSubjects);
+        return;
+      }
+      
+      // Filter subjects by name containing the search text (case-insensitive)
+      var filtered = allTeacherSubjects.Where(s => 
+          s.Name?.Contains(SearchText, StringComparison.OrdinalIgnoreCase) == true)
+          .ToList();
+          
+      SubjectList = new ObservableCollection<Subject>(filtered);
     }
 
     [RelayCommand]

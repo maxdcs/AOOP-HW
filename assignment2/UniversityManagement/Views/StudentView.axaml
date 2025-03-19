@@ -7,13 +7,26 @@
 
     <Panel Background="#000000">
         <!-- Main container with fixed width and centered -->
-        <Grid Margin="30" RowDefinitions="Auto,*">
+        <Grid Margin="30" RowDefinitions="Auto,Auto,*">
             <StackPanel Grid.Row="0" Margin="0,0,0,20">
                 <TextBlock Text="Student Dashboard" FontSize="24" FontWeight="Bold"/>
                 <TextBlock Text="{Binding TemplateStudent.Name}" FontSize="16"/>
             </StackPanel>
             
-            <Grid Grid.Row="1" ColumnDefinitions="*,*">
+            <!-- Search Bar -->
+            <Border Grid.Row="1" 
+                    BorderBrush="Gray" 
+                    BorderThickness="1" 
+                    Padding="10" 
+                    Margin="0,0,0,15"
+                    CornerRadius="5">
+                <DockPanel>
+                    <TextBlock VerticalAlignment="Center" Text="Search Subjects:" Margin="0,0,10,0"/>
+                    <TextBox Text="{Binding SearchText}" Watermark="Enter subject name..." />
+                </DockPanel>
+            </Border>
+            
+            <Grid Grid.Row="2" ColumnDefinitions="*,*">
                 <!-- Left Panel: Available Subjects -->
                 <DockPanel Grid.Column="0" Margin="0,0,10,0">
                     <TextBlock DockPanel.Dock="Top" Text="Available Subjects" FontWeight="Bold" Margin="0,0,0,10"/>

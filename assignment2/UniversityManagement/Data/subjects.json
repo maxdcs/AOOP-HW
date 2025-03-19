@@ -1,27 +1,27 @@
 [
   {
-    "Id": "729138e0-2f61-4894-8810-edd543ed90f8",
-    "Name": "mathsew",
-    "Description": "Hello",
-    "TeacherId": "550e8400-e29b-41d4-a716-446655440000",
-    "StudentsEnrolled": [
-      "550e8400-e29b-41d4-a716-446655440003"
-    ]
-  },
-  {
-    "Id": "d87f4eb4-dcdc-4a74-bdf8-24b1940a6751",
-    "Name": "MDBSc",
-    "Description": "Mountain Dew Breezer Sour cola ewq",
-    "TeacherId": "550e8400-e29b-41d4-a716-446655440000",
-    "StudentsEnrolled": [
-      "550e8400-e29b-41d4-a716-446655440003"
-    ]
-  },
-  {
-    "Id": "6e08beb8-61d5-424a-89cb-e95ee0439478",
-    "Name": "Doritos",
-    "Description": "Chilli",
+    "Id": "9dd711b5-070d-4eb7-855b-faaa9efb3125",
+    "Name": "Math2SC",
+    "Description": "Math for science 2",
     "TeacherId": "550e8400-e29b-41d4-a716-446655440000",
     "StudentsEnrolled": []
+  },
+  {
+    "Id": "02ba3226-03ae-429c-a805-adac1ce9fa4c",
+    "Name": "Phys2",
+    "Description": "Physics but 2",
+    "TeacherId": "550e8400-e29b-41d4-a716-446655440000",
+    "StudentsEnrolled": [
+      "550e8400-e29b-41d4-a716-446655440003"
+    ]
+  },
+  {
+    "Id": "2169d953-8513-43b2-bfb1-ed3639e46b0b",
+    "Name": "AOOP2",
+    "Description": "Avalonia Avalonia",
+    "TeacherId": "550e8400-e29b-41d4-a716-446655440000",
+    "StudentsEnrolled": [
+      "550e8400-e29b-41d4-a716-446655440003"
+    ]
   }
 ]
