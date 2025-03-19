@@ -3,6 +3,8 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+
 
 using System.Collections.ObjectModel;
 using UniversityManagement.Models;
@@ -29,6 +31,12 @@ namespace UniversityManagement.ViewModels
 
     [ObservableProperty]
     private bool isViewingDetails = false;
+
+    [ObservableProperty]
+    private string enrollmentMessage = string.Empty;
+
+    [ObservableProperty]
+    private bool showEnrollmentMessage = false;
 
     public StudentWindowViewModel()
     {
@@ -68,6 +76,13 @@ namespace UniversityManagement.ViewModels
         return;
 
       sharedSubjectManager.EnrollStudentInSubjectId(TemplateStudent.Id, subject.Id);
+
+      // Set confirmation message
+      EnrollmentMessage = $"Successfully enrolled in {subject.Name}!";
+      ShowEnrollmentMessage = true;
+
+      // Hide message when refreshing subjects or enrolling in another course
+      Task.Delay(3000).ContinueWith(_ => ShowEnrollmentMessage = false);
 
       // Refresh both lists
       LoadSubjects();
