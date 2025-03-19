@@ -54,7 +54,6 @@ namespace UniversityManagement.ViewModels
       sharedSubjectManager = MainWindowViewModel.Instance?.SubjectManager;
       TemplateStudent = MainWindowViewModel.Instance?.CurrentStudent;
 
-      // Initialize the subject lists
       if (sharedSubjectManager != null && TemplateStudent != null)
       {
         LoadSubjects();
@@ -66,10 +65,8 @@ namespace UniversityManagement.ViewModels
       if (sharedSubjectManager == null || TemplateStudent == null)
         return;
 
-      // Get enrolled subjects
       allEnrolledSubjects = sharedSubjectManager.GetEnrolledSubjectsByStudentId(TemplateStudent.Id);
       
-      // Get all subjects and filter out the ones already enrolled in
       var enrolledIds = allEnrolledSubjects.Select(s => s.Id).ToHashSet();
       allAvailableSubjects = sharedSubjectManager.subjectList
                     .Where(s => !enrolledIds.Contains(s.Id))
@@ -87,19 +84,16 @@ namespace UniversityManagement.ViewModels
     {
       if (string.IsNullOrWhiteSpace(SearchText))
       {
-        // Show all subjects if no search text
         AvailableSubjects = new ObservableCollection<Subject>(allAvailableSubjects);
         EnrolledSubjects = new ObservableCollection<Subject>(allEnrolledSubjects);
         return;
       }
       
-      // Filter available subjects
       var filteredAvailable = allAvailableSubjects
           .Where(s => s.Name?.Contains(SearchText, StringComparison.OrdinalIgnoreCase) == true)
           .ToList();
       AvailableSubjects = new ObservableCollection<Subject>(filteredAvailable);
       
-      // Filter enrolled subjects
       var filteredEnrolled = allEnrolledSubjects
           .Where(s => s.Name?.Contains(SearchText, StringComparison.OrdinalIgnoreCase) == true)
           .ToList();
@@ -114,14 +108,11 @@ namespace UniversityManagement.ViewModels
 
       sharedSubjectManager.EnrollStudentInSubjectId(TemplateStudent.Id, subject.Id);
     
-      // Set confirmation message
       EnrollmentMessage = $"Successfully enrolled in {subject.Name}!";
       ShowEnrollmentMessage = true;
     
-      // Hide message when refreshing subjects or enrolling in another course
       Task.Delay(3000).ContinueWith(_ => ShowEnrollmentMessage = false);
 
-      // Refresh both lists
       LoadSubjects();
     }
 
@@ -133,14 +124,11 @@ namespace UniversityManagement.ViewModels
 
       sharedSubjectManager.RemoveSubjectFromStudent(TemplateStudent.Id, subject.Id);
 
-      // Set confirmation message
       DropMessage = $"Successfully dropped {subject.Name}!";
       ShowDropMessage = true;
 
-      // Hide message after 3 seconds
       Task.Delay(3000).ContinueWith(_ => ShowDropMessage = false);
 
-      // Refresh both lists
       LoadSubjects();
     }
 

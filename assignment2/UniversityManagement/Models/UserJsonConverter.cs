@@ -8,23 +8,18 @@ namespace UniversityManagement.Models
   {
     public override User Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-      // Save reader state
       var readerAtStart = reader;
       
-      // Read the JSON document into a JsonDocument
       using JsonDocument doc = JsonDocument.ParseValue(ref reader);
       var root = doc.RootElement;
       
-      // Get the Role property to determine the concrete type
       string role = root.GetProperty("Role").GetString() ?? string.Empty;
       
-      // Get other common properties
       Guid id = root.GetProperty("Id").GetGuid();
       string? name = root.GetProperty("Name").GetString();
       string? username = root.GetProperty("Username").GetString();
       string? password = root.GetProperty("Password").GetString();
       
-      // Create the appropriate type
       User user = role switch
       {
         "Teacher" => new Teacher(name ?? string.Empty, username ?? string.Empty, password ?? string.Empty) { Id = id },

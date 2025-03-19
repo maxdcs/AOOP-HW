@@ -13,7 +13,6 @@ public class Subject
     public Guid TeacherId { get; set; }
     public List<Guid> StudentsEnrolled { get; set; } = new List<Guid>();
 
-    // Keep your existing constructor for code usage
     public Subject(string name, string description, Guid teacherId)
     {
         Id = Guid.NewGuid();
@@ -23,6 +22,5 @@ public class Subject
         StudentsEnrolled = new List<Guid>();
     }
 
-    // Add parameterless constructor for JSON deserialization
     public Subject() { }
 }

@@ -5,57 +5,126 @@
     x:Class="UniversityManagement.Views.TeacherView"
     x:DataType="vm:TeacherWindowViewModel">
 
-    <Panel Background="#000000">
-        <!-- Main container with fixed width and centered -->
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#3949ab" Offset="0"/>
+                        <GradientStop Color="#1a237e" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Padding" Value="15,8"/>
+        </Style>
+
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#1a237e" Offset="0"/>
+                        <GradientStop Color="#3949ab" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="#1f2937"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Padding" Value="10,8"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Border>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#0d1117" Offset="0"/>
+                <GradientStop Color="#161b22" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
         <Grid Margin="30" RowDefinitions="Auto,Auto,*">
-            <StackPanel Grid.Row="0" Margin="0,0,0,20">
-                <TextBlock Text="Teacher Dashboard" FontSize="24" FontWeight="Bold"/>
-                <TextBlock Text="{Binding TemplateTeacher.Name}" FontSize="16"/>
-            </StackPanel>
-            
-            <!-- Search Bar -->
+            <!-- Header with Gradient -->
+            <Border Grid.Row="0" 
+                    Margin="0,0,0,20" 
+                    Padding="20,15" 
+                    CornerRadius="10">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#1a237e" Offset="0"/>
+                        <GradientStop Color="#3949ab" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel>
+                    <TextBlock Text="Teacher Dashboard" 
+                             FontSize="24" 
+                             FontWeight="Bold"
+                             Foreground="White"/>
+                    <TextBlock Text="{Binding TemplateTeacher.Name}" 
+                             FontSize="16"
+                             Foreground="#94a3b8"/>
+                </StackPanel>
+            </Border>
+
             <Border Grid.Row="1" 
-                    BorderBrush="Gray" 
+                    Background="#1f2937"
                     BorderThickness="1" 
-                    Padding="10" 
-                    Margin="0,0,0,15"
-                    CornerRadius="5">
+                    Padding="15" 
+                    Margin="0,0,0,20"
+                    CornerRadius="10">
                 <DockPanel>
-                    <TextBlock VerticalAlignment="Center" Text="Search Subjects:" Margin="0,0,10,0"/>
-                    <TextBox Text="{Binding SearchText}" Watermark="Enter subject name..." />
+                    <TextBlock VerticalAlignment="Center" 
+                             Text="Search Subjects:" 
+                             Foreground="#94a3b8"
+                             FontWeight="SemiBold"
+                             Margin="0,0,10,0"/>
+                    <TextBox Text="{Binding SearchText}" 
+                            Watermark="Enter subject name..."/>
                 </DockPanel>
             </Border>
-            
+
             <Grid Grid.Row="2" ColumnDefinitions="*,*">
-                <!-- Left Panel: Add New Subject -->
                 <Border Grid.Column="0" 
-                       BorderBrush="Gray" 
+                       Background="#1f2937"
                        BorderThickness="1" 
-                       Padding="15" 
+                       Padding="20" 
                        Margin="0,0,10,0"
-                       CornerRadius="5">
+                       CornerRadius="10">
                     <DockPanel>
-                        <TextBlock DockPanel.Dock="Top" Text="Add New Subject" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <TextBlock DockPanel.Dock="Top" 
+                                 Text="Add New Subject" 
+                                 FontWeight="Bold"
+                                 Foreground="#94a3b8"
+                                 Margin="0,0,0,15"/>
                         
-                        <!-- Add Subject Success Message -->
                         <Border DockPanel.Dock="Top"
-                                Background="Green" 
+                                Background="#059669"
                                 Padding="10"
                                 CornerRadius="5"
-                                Margin="0,0,0,10"
+                                Margin="0,0,0,15"
                                 IsVisible="{Binding ShowAddSubjectMessage}">
                             <TextBlock Text="{Binding AddSubjectMessage}" 
-                                       Foreground="White"
-                                       FontWeight="Bold"
-                                       HorizontalAlignment="Center"/>
+                                     Foreground="White"
+                                     FontWeight="Bold"
+                                     HorizontalAlignment="Center"/>
                         </Border>
                         
                         <StackPanel Spacing="10">
-                            <TextBlock Text="Subject Name:" />
+                            <TextBlock Text="Subject Name:" 
+                                     Foreground="#94a3b8"/>
                             <TextBox Text="{Binding NewSubjectName}" />
                             
-                            <TextBlock Text="Description:" />
-                            <TextBox Text="{Binding NewSubjectDescription}" Height="100" TextWrapping="Wrap" AcceptsReturn="True" />
+                            <TextBlock Text="Description:" 
+                                     Foreground="#94a3b8"/>
+                            <TextBox Text="{Binding NewSubjectDescription}" 
+                                    Height="100" 
+                                    TextWrapping="Wrap" 
+                                    AcceptsReturn="True" />
                             
                             <Button Content="Add Subject" 
                                    Command="{Binding AddSubjectCommand}" 
@@ -64,62 +133,82 @@
                     </DockPanel>
                 </Border>
                 
-                <!-- Right Panel: Your Subjects and Delete Confirmation -->
                 <DockPanel Grid.Column="1" Margin="10,0,0,0">
-                    <TextBlock DockPanel.Dock="Top" Text="Your Subjects" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBlock DockPanel.Dock="Top" 
+                             Text="Your Subjects" 
+                             FontWeight="Bold"
+                             Foreground="#94a3b8"
+                             Margin="0,0,0,10"/>
                     
-                    <!-- Delete Subject Confirmation Message -->
                     <Border DockPanel.Dock="Top"
-                            Background="#FF5722" 
+                            Background="#dc2626"
                             Padding="10"
                             CornerRadius="5"
                             Margin="0,0,0,10"
                             IsVisible="{Binding ShowDeleteSubjectMessage}">
                         <TextBlock Text="{Binding DeleteSubjectMessage}" 
-                                   Foreground="White"
-                                   FontWeight="Bold"
-                                   HorizontalAlignment="Center"/>
+                                 Foreground="White"
+                                 FontWeight="Bold"
+                                 HorizontalAlignment="Center"/>
                     </Border>
                     
                     <Grid>
-                        <!-- Right Column when editing -->
-                        <Border 
-                                BorderBrush="Gray" 
+                        <Border Background="#1f2937"
                                 BorderThickness="1" 
-                                Padding="15" 
-                                CornerRadius="5"
+                                Padding="20" 
+                                CornerRadius="10"
                                 IsVisible="{Binding IsEditingSubject}">
                             <Grid RowDefinitions="Auto,*,Auto">
-                                <TextBlock Grid.Row="0" Text="Edit Subject" FontWeight="Bold" Margin="0,0,0,10"/>
+                                <TextBlock Grid.Row="0" 
+                                         Text="Edit Subject" 
+                                         FontWeight="Bold"
+                                         Foreground="#94a3b8"
+                                         Margin="0,0,0,15"/>
                                 
                                 <StackPanel Grid.Row="1" Spacing="10">
-                                    <TextBlock Text="Subject Name:" />
+                                    <TextBlock Text="Subject Name:" 
+                                             Foreground="#94a3b8"/>
                                     <TextBox Text="{Binding EditSubjectName}" />
                                     
-                                    <TextBlock Text="Description:" />
-                                    <TextBox Text="{Binding EditSubjectDescription}" Height="200" TextWrapping="Wrap" AcceptsReturn="True" />
+                                    <TextBlock Text="Description:" 
+                                             Foreground="#94a3b8"/>
+                                    <TextBox Text="{Binding EditSubjectDescription}" 
+                                           Height="200" 
+                                           TextWrapping="Wrap" 
+                                           AcceptsReturn="True" />
                                 </StackPanel>
                                 
-                                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                                <StackPanel Grid.Row="2" 
+                                          Orientation="Horizontal" 
+                                          HorizontalAlignment="Right" 
+                                          Margin="0,15,0,0"
+                                          Spacing="10">
                                     <Button Content="Cancel" 
-                                           Command="{Binding CancelEditCommand}" 
-                                           Margin="0,0,10,0"/>
+                                           Command="{Binding CancelEditCommand}"/>
                                     <Button Content="Save Changes" 
                                            Command="{Binding SaveSubjectEditCommand}"/>
                                 </StackPanel>
                             </Grid>
                         </Border>
                         
-                        <!-- Subject List (shown when not editing) -->
                         <ListBox ItemsSource="{Binding SubjectList}" 
-                                 IsVisible="{Binding !IsEditingSubject}">
+                                IsVisible="{Binding !IsEditingSubject}"
+                                Background="Transparent">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" Margin="0,3" CornerRadius="3" Width="550">
+                                    <Border Background="#1f2937" 
+                                            BorderThickness="1" 
+                                            Padding="15" 
+                                            Margin="0,5" 
+                                            CornerRadius="8">
                                         <Grid ColumnDefinitions="*,Auto,Auto">
                                             <StackPanel Grid.Column="0" Spacing="4">
-                                                <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
-                                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Opacity="0.8"/>
+                                                <TextBlock Text="{Binding Name}" 
+                                                         FontWeight="Bold"
+                                                         Foreground="White"/>
+                                                <TextBlock Text="{Binding Description}" 
+                                                         TextWrapping="Wrap"
+                                                         Foreground="#94a3b8"/>
                                             </StackPanel>
                                             <Button Grid.Column="1" 
                                                    Content="Edit" 
@@ -129,8 +218,7 @@
                                             <Button Grid.Column="2" 
                                                    Content="Delete" 
                                                    Command="{Binding Source={x:Static vm:TeacherWindowViewModel.Current}, Path=DeleteSubjectCommand}" 
-                                                   CommandParameter="{Binding}"
-                                                   Margin="0,0,0,0"/>
+                                                   CommandParameter="{Binding}"/>
                                         </Grid>
                                     </Border>
                                 </DataTemplate>
@@ -140,5 +228,5 @@
                 </DockPanel>
             </Grid>
         </Grid>
-    </Panel>
+    </Border>
 </UserControl>

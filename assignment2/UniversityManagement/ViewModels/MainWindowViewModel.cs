@@ -50,11 +50,11 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private void InitWithDefaultUser()
     {
-        var teachers = userManager.GetAllTeachers();
-        var students = userManager.GetAllStudents();
+        var teachers = UserManager.GetAllTeachers();
+        var students = UserManager.GetAllStudents();
         
-        currentTeacher = teachers.FirstOrDefault() ?? new Teacher("Default Teacher", "default", "123");
-        currentStudent = students.FirstOrDefault() ?? new Student("Default Student", "default", "123");
+        CurrentTeacher = teachers.FirstOrDefault() ?? new Teacher("Default Teacher", "default", "123");
+        CurrentStudent = students.FirstOrDefault() ?? new Student("Default Student", "default", "123");
         
         TeacherViewModel = new TeacherWindowViewModel();
         StudentViewModel = new StudentWindowViewModel();
@@ -66,7 +66,6 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private void InitWithAuthenticatedUser(User user)
     {
-        // Set up appropriate views based on user role
         if (user is Teacher teacher)
         {
             CurrentTeacher = teacher;

@@ -49,12 +49,11 @@ namespace UniversityManagement.Models
       }
     }
 
-    // Modify existing methods to save after changes
     public void CreateAndAddNewSubject(string name, string description, Guid teacherId)
     {
       Subject newSubject = new(name, description, teacherId);
       subjectList.Add(newSubject);
-      SaveSubjectsToFile(); // Save after adding
+      SaveSubjectsToFile();
     }
 
     public void EditSubjectById(Guid subjectId, string newName, string newDescription)
@@ -64,24 +63,23 @@ namespace UniversityManagement.Models
       {
         subject.Name = newName;
         subject.Description = newDescription;
-        SaveSubjectsToFile(); // Save after editing
+        SaveSubjectsToFile();
       }
     }
 
     public void DeleteSubjectById(Guid subjectId)
     {
       subjectList.RemoveAll(subject => subject.Id == subjectId);
-      SaveSubjectsToFile(); // Save after deleting
+      SaveSubjectsToFile();
     }
 
-    // Update student methods to save changes
     public void EnrollStudentInSubjectId(Guid studentId, Guid subjectId)
     {
       var subject = subjectList.FirstOrDefault(subject => subject.Id == subjectId);
       if (subject != null && subject.StudentsEnrolled != null)
       {
         subject.StudentsEnrolled.Add(studentId);
-        SaveSubjectsToFile(); // Save after enrolling
+        SaveSubjectsToFile();
       }
     }
 
@@ -91,17 +89,15 @@ namespace UniversityManagement.Models
       if (subject != null && subject.StudentsEnrolled != null)
       {
         subject.StudentsEnrolled.Remove(studentId);
-        SaveSubjectsToFile(); // Save after dropping
+        SaveSubjectsToFile();
       }
     }
 
-    // Gets subjects created by a specific teacher
     public List<Subject> GetCreatedSubjectsByTeacherId(Guid teacherId)
     {
       return subjectList.FindAll(subject => subject.TeacherId == teacherId);
     }
 
-    // Gets subjects that a student is enrolled in
     public List<Subject> GetEnrolledSubjectsByStudentId(Guid studentId)
     {
       return subjectList.FindAll(subject => subject.StudentsEnrolled != null &&

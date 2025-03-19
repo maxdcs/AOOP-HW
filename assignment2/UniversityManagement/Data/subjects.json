@@ -1,12 +1,5 @@
 [
   {
-    "Id": "9dd711b5-070d-4eb7-855b-faaa9efb3125",
-    "Name": "Math2SC",
-    "Description": "Math for science 2",
-    "TeacherId": "550e8400-e29b-41d4-a716-446655440000",
-    "StudentsEnrolled": []
-  },
-  {
     "Id": "02ba3226-03ae-429c-a805-adac1ce9fa4c",
     "Name": "Phys2",
     "Description": "Physics but 2",
@@ -23,5 +16,12 @@
     "StudentsEnrolled": [
       "550e8400-e29b-41d4-a716-446655440003"
     ]
+  },
+  {
+    "Id": "af82548c-f8cd-48b0-ab38-44252d04fc61",
+    "Name": "NewSub",
+    "Description": "subjectified",
+    "TeacherId": "550e8400-e29b-41d4-a716-446655440000",
+    "StudentsEnrolled": []
   }
 ]

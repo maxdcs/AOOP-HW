@@ -33,7 +33,6 @@ namespace UniversityManagement.ViewModels
                 return;
             }
 
-            // Try to authenticate
             User? user = _userManager.AuthenticateUser(Username, Password);
             if (user == null)
             {
@@ -41,13 +40,11 @@ namespace UniversityManagement.ViewModels
                 return;
             }
 
-            // Create main window with authenticated user
             var mainWindow = new MainWindow
             {
                 DataContext = new MainWindowViewModel(user)
             };
 
-            // Show main window and close login window
             mainWindow.Show();
             
             if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)

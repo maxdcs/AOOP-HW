@@ -63,7 +63,6 @@ namespace UniversityManagement.ViewModels
       sharedSubjectManager = MainWindowViewModel.Instance?.SubjectManager;
       TemplateTeacher = MainWindowViewModel.Instance?.CurrentTeacher;
 
-      // Initialize the subject list from the shared manager
       if (sharedSubjectManager != null && TemplateTeacher != null)
       {
         LoadSubjects();
@@ -85,12 +84,10 @@ namespace UniversityManagement.ViewModels
     {
       if (string.IsNullOrWhiteSpace(SearchText))
       {
-        // Show all subjects if no search text
         SubjectList = new ObservableCollection<Subject>(allTeacherSubjects);
         return;
       }
       
-      // Filter subjects by name containing the search text (case-insensitive)
       var filtered = allTeacherSubjects.Where(s => 
           s.Name?.Contains(SearchText, StringComparison.OrdinalIgnoreCase) == true)
           .ToList();
@@ -114,17 +111,13 @@ namespace UniversityManagement.ViewModels
         TemplateTeacher.Id
       );
 
-      // Set confirmation message
       AddSubjectMessage = $"Successfully created subject: {NewSubjectName}!";
       ShowAddSubjectMessage = true;
 
-      // Hide message after 3 seconds
       Task.Delay(3000).ContinueWith(_ => ShowAddSubjectMessage = false);
 
-      // Refresh the subject list
       LoadSubjects();
 
-      // Clear the input fields
       NewSubjectName = "";
       NewSubjectDescription = "";
     }
@@ -139,14 +132,11 @@ namespace UniversityManagement.ViewModels
       
       sharedSubjectManager.DeleteSubjectById(subject.Id);
 
-      // Set confirmation message
       DeleteSubjectMessage = $"Successfully deleted subject: {subjectName}!";
       ShowDeleteSubjectMessage = true;
 
-      // Hide message after 3 seconds
       Task.Delay(3000).ContinueWith(_ => ShowDeleteSubjectMessage = false);
 
-      // Refresh the subject list
       LoadSubjects();
     }
 
@@ -178,7 +168,6 @@ namespace UniversityManagement.ViewModels
         EditSubjectDescription
       );
 
-      // Refresh and reset
       LoadSubjects();
       CancelEdit();
     }

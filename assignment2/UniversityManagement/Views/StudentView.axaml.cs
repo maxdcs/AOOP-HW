@@ -10,8 +10,6 @@ namespace UniversityManagement.Views
     public StudentView()
     {
       InitializeComponent();
-      // Removed: DataContext = new StudentWindowViewModel();
-      // DataContext now comes from parent binding
     }
 
     private void InitializeComponent()
