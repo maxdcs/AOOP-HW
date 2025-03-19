@@ -24,6 +24,9 @@ build_property.EnableCodeStyleSeverity =
 [/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement/Views/LoginWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 

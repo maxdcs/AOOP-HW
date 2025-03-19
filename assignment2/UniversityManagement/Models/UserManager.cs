@@ -10,12 +10,19 @@ namespace UniversityManagement.Models
   {
     private const string UsersFilePath = "Data/users.json";
     private List<User> userList = [];
-    
+
     public UserManager()
     {
       LoadUsersFromFile();
     }
-    
+
+    public User? AuthenticateUser(string username, string password)
+    {
+      return userList.FirstOrDefault(u =>
+          u.Username == username &&
+          u.Password == password);
+    }
+
     private void LoadUsersFromFile()
     {
       try
@@ -40,22 +47,22 @@ namespace UniversityManagement.Models
         Console.WriteLine($"Error loading users: {ex.Message}");
       }
     }
-    
+
     public List<Teacher> GetAllTeachers()
     {
       return userList.OfType<Teacher>().ToList();
     }
-    
+
     public List<Student> GetAllStudents()
     {
       return userList.OfType<Student>().ToList();
     }
-    
+
     public Teacher? GetTeacherById(Guid id)
     {
       return userList.OfType<Teacher>().FirstOrDefault(t => t.Id == id);
     }
-    
+
     public Student? GetStudentById(Guid id)
     {
       return userList.OfType<Student>().FirstOrDefault(s => s.Id == id);

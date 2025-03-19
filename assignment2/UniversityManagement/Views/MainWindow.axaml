@@ -33,11 +33,11 @@
                 </StackPanel>
             </TabItem>
             
-            <TabItem Header="Teacher Dashboard">
+            <TabItem Header="Teacher Dashboard" IsVisible="{Binding IsTeacherRole}">
                 <views:TeacherView DataContext="{Binding TeacherViewModel}" />
             </TabItem>
             
-            <TabItem Header="Student Dashboard">
+            <TabItem Header="Student Dashboard" IsVisible="{Binding IsStudentRole}">
                 <views:StudentView DataContext="{Binding StudentViewModel}" />
             </TabItem>
         </TabControl>
