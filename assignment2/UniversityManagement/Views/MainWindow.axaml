@@ -28,7 +28,7 @@
                     <TextBlock Text="{Binding Greeting}" 
                                HorizontalAlignment="Center" 
                                FontSize="18" />
-                    <TextBlock Text="Welcome to the University Management System" 
+                    <TextBlock Text="Please proceed to the Dashboard" 
                                HorizontalAlignment="Center" />
                 </StackPanel>
             </TabItem>

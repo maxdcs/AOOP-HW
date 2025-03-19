@@ -10,7 +10,7 @@ public partial class MainWindowViewModel : ViewModelBase
 {
     public static MainWindowViewModel? Instance { get; private set; }
   
-    public string Greeting { get; } = "Welcome to University Management System!";
+    public string Greeting { get; } = "Hello!";
   
     [ObservableProperty]
     public SubjectManager subjectManager = new();

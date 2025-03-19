@@ -303,8 +303,11 @@
 /Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement.Tests/obj/Debug/net9.0/UniversityManagement.Tests.csproj.CoreCompileInputs.cache
 /Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement.Tests/obj/Debug/net9.0/UniversityManagement.Tests.sourcelink.json
 /Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement.Tests/obj/Debug/net9.0/Universi.53D3FE56.Up2Date
-/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement.Tests/obj/Debug/net9.0/UniversityManagement.Tests.dll
-/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement.Tests/obj/Debug/net9.0/refint/UniversityManagement.Tests.dll
-/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement.Tests/obj/Debug/net9.0/UniversityManagement.Tests.pdb
 /Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement.Tests/obj/Debug/net9.0/UniversityManagement.Tests.genruntimeconfig.cache
 /Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement.Tests/obj/Debug/net9.0/ref/UniversityManagement.Tests.dll
+/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement.Tests/bin/Debug/net9.0/Avalonia.Headless.dll
+/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement.Tests/bin/Debug/net9.0/Avalonia.Headless.XUnit.dll
+/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement.Tests/obj/Debug/net9.0/Avalonia/resources
+/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement.Tests/obj/Debug/net9.0/Avalonia/UniversityManagement.Tests.dll
+/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement.Tests/obj/Debug/net9.0/Avalonia/UniversityManagement.Tests.pdb
+/Users/maksymdrzyzgiewicz/Desktop/repos/aoophw/AOOP-HW/assignment2/UniversityManagement.Tests/obj/Debug/net9.0/refint/Avalonia/UniversityManagement.Tests.dll

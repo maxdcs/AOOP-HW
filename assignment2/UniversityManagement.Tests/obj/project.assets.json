@@ -2,11 +2,11 @@
   "version": 3,
   "targets": {
     "net9.0": {
-      "Avalonia/11.2.1": {
+      "Avalonia/11.2.5": {
         "type": "package",
         "dependencies": {
-          "Avalonia.BuildServices": "0.0.29",
-          "Avalonia.Remote.Protocol": "11.2.1",
+          "Avalonia.BuildServices": "0.0.31",
+          "Avalonia.Remote.Protocol": "11.2.5",
           "MicroCom.Runtime": "0.11.0"
         },
         "compile": {
@@ -101,7 +101,7 @@
           }
         }
       },
-      "Avalonia.BuildServices/0.0.29": {
+      "Avalonia.BuildServices/0.0.31": {
         "type": "package",
         "build": {
           "buildTransitive/Avalonia.BuildServices.targets": {}
@@ -213,6 +213,39 @@
           }
         }
       },
+      "Avalonia.Headless/11.2.5": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia": "11.2.5"
+        },
+        "compile": {
+          "lib/net8.0/Avalonia.Headless.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Avalonia.Headless.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Avalonia.Headless.XUnit/11.2.5": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia.Headless": "11.2.5",
+          "xunit.core": "2.4.0"
+        },
+        "compile": {
+          "lib/net8.0/Avalonia.Headless.XUnit.dll": {
+            "related": ".runtimeconfig.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Avalonia.Headless.XUnit.dll": {
+            "related": ".runtimeconfig.json;.xml"
+          }
+        }
+      },
       "Avalonia.Native/11.2.1": {
         "type": "package",
         "dependencies": {
@@ -235,7 +268,7 @@
           }
         }
       },
-      "Avalonia.Remote.Protocol/11.2.1": {
+      "Avalonia.Remote.Protocol/11.2.5": {
         "type": "package",
         "compile": {
           "lib/net8.0/Avalonia.Remote.Protocol.dll": {
@@ -270,10 +303,10 @@
           }
         }
       },
-      "Avalonia.Themes.Fluent/11.2.1": {
+      "Avalonia.Themes.Fluent/11.2.5": {
         "type": "package",
         "dependencies": {
-          "Avalonia": "11.2.1"
+          "Avalonia": "11.2.5"
         },
         "compile": {
           "lib/net8.0/Avalonia.Themes.Fluent.dll": {
@@ -1017,10 +1050,10 @@
     }
   },
   "libraries": {
-    "Avalonia/11.2.1": {
-      "sha512": "AyYhIN2A7bRwxp6BFHrIbXAHUFPXegzSMYwDrUnw1BzZs9ctwYTiCPCM5wbE2PXsEBwFDVJ/a2YHTOp56fSYAw==",
+    "Avalonia/11.2.5": {
+      "sha512": "drAn4ymqy6c1AWIzpQIFLIQjPx9p7Ffsu+7bYy4vV8MtvmgiQ2s6R5HvmNuWheUtpHyhnowVQoOdJQl5uS6a+A==",
       "type": "package",
-      "path": "avalonia/11.2.1",
+      "path": "avalonia/11.2.5",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -1028,7 +1061,7 @@
         "Icon.png",
         "analyzers/dotnet/cs/Avalonia.Analyzers.dll",
         "analyzers/dotnet/cs/Avalonia.Generators.dll",
-        "avalonia.11.2.1.nupkg.sha512",
+        "avalonia.11.2.5.nupkg.sha512",
         "avalonia.nuspec",
         "build/Avalonia.Generators.props",
         "build/Avalonia.props",
@@ -1202,15 +1235,16 @@
         "runtimes/win-x86/native/av_libglesv2.dll"
       ]
     },
-    "Avalonia.BuildServices/0.0.29": {
-      "sha512": "U4eJLQdoDNHXtEba7MZUCwrBErBTxFp6sUewXBOdAhU0Kwzwaa/EKFcYm8kpcysjzKtfB4S0S9n0uxKZFz/ikw==",
+    "Avalonia.BuildServices/0.0.31": {
+      "sha512": "KmCN6Hc+45q4OnF10ge450yVUvWuxU6bdQiyKqiSvrHKpahNrEdk0kG6Ip6GHk2SKOCttGQuA206JVdkldEENg==",
       "type": "package",
-      "path": "avalonia.buildservices/0.0.29",
+      "path": "avalonia.buildservices/0.0.31",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "avalonia.buildservices.0.0.29.nupkg.sha512",
+        "Icon.png",
+        "avalonia.buildservices.0.0.31.nupkg.sha512",
         "avalonia.buildservices.nuspec",
         "build/Avalonia.BuildServices.targets",
         "buildTransitive/Avalonia.BuildServices.targets",
@@ -1327,6 +1361,44 @@
         "lib/netstandard2.0/Avalonia.FreeDesktop.xml"
       ]
     },
+    "Avalonia.Headless/11.2.5": {
+      "sha512": "TE68DbAfYNk4+c29EkPDwyPIUeyBQ0WQ5HiwenLWMowbZIxto4hlV80x+lZZnTVU98scfl8/hz8nMdgFnERitw==",
+      "type": "package",
+      "path": "avalonia.headless/11.2.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "avalonia.headless.11.2.5.nupkg.sha512",
+        "avalonia.headless.nuspec",
+        "lib/net6.0/Avalonia.Headless.dll",
+        "lib/net6.0/Avalonia.Headless.xml",
+        "lib/net8.0/Avalonia.Headless.dll",
+        "lib/net8.0/Avalonia.Headless.xml",
+        "lib/netstandard2.0/Avalonia.Headless.dll",
+        "lib/netstandard2.0/Avalonia.Headless.xml"
+      ]
+    },
+    "Avalonia.Headless.XUnit/11.2.5": {
+      "sha512": "EcTxD1QcKpnfNcp7EG7Mz8LZruZHfO42VA3kDJMS0ZqfSo9VWYYpyoGbzGcp6vhznh/MGxC3tzGWrXfydGr+JQ==",
+      "type": "package",
+      "path": "avalonia.headless.xunit/11.2.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "avalonia.headless.xunit.11.2.5.nupkg.sha512",
+        "avalonia.headless.xunit.nuspec",
+        "lib/net6.0/Avalonia.Headless.XUnit.dll",
+        "lib/net6.0/Avalonia.Headless.XUnit.runtimeconfig.json",
+        "lib/net6.0/Avalonia.Headless.XUnit.xml",
+        "lib/net8.0/Avalonia.Headless.XUnit.dll",
+        "lib/net8.0/Avalonia.Headless.XUnit.runtimeconfig.json",
+        "lib/net8.0/Avalonia.Headless.XUnit.xml",
+        "lib/netstandard2.0/Avalonia.Headless.XUnit.dll",
+        "lib/netstandard2.0/Avalonia.Headless.XUnit.xml"
+      ]
+    },
     "Avalonia.Native/11.2.1": {
       "sha512": "1cVasDUIkqfAYLkaLFDx+VDZymer2v643OYD6Jd6nzP20TNTqN2LfFOpxXCTYMrWc9Dk5AoVJJCrz3wRE5kooQ==",
       "type": "package",
@@ -1346,15 +1418,15 @@
         "runtimes/osx/native/libAvaloniaNative.dylib"
       ]
     },
-    "Avalonia.Remote.Protocol/11.2.1": {
-      "sha512": "aqEialxjir7DO/dOFf7BGN/yQ4/adSC5UuVfqBr/RUHOENSH6CqoHj8kmtmJxnuz7ESQFSB2+h1kLVnk5csiDw==",
+    "Avalonia.Remote.Protocol/11.2.5": {
+      "sha512": "wS/qPTRVmgB49PxVMEFRczWS2UQ91Sl7xBI4qQtVyyi+REeH5L0sXYTjyKkHALI/vZd4DeH4SrleDEX0zNOVmA==",
       "type": "package",
-      "path": "avalonia.remote.protocol/11.2.1",
+      "path": "avalonia.remote.protocol/11.2.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-        "avalonia.remote.protocol.11.2.1.nupkg.sha512",
+        "avalonia.remote.protocol.11.2.5.nupkg.sha512",
         "avalonia.remote.protocol.nuspec",
         "lib/net6.0/Avalonia.Remote.Protocol.dll",
         "lib/net6.0/Avalonia.Remote.Protocol.xml",
@@ -1382,15 +1454,15 @@
         "lib/netstandard2.0/Avalonia.Skia.xml"
       ]
     },
-    "Avalonia.Themes.Fluent/11.2.1": {
-      "sha512": "9YUzDmZO5oDppsoA3Igeu/v1cVi4xu8jdO6ZrBzXJXJ9mma/htK0Ub9+V1lRoCW/O70nQfBX+ZDpm0dca1PVgw==",
+    "Avalonia.Themes.Fluent/11.2.5": {
+      "sha512": "+YiihoT08QapE6U6dLyuYC/YMloFllMMwbbnixMLYuvmJeirUzqukuWzQ1cGjyn8CKpqZVIeaCzenJcEu/YGIA==",
       "type": "package",
-      "path": "avalonia.themes.fluent/11.2.1",
+      "path": "avalonia.themes.fluent/11.2.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-        "avalonia.themes.fluent.11.2.1.nupkg.sha512",
+        "avalonia.themes.fluent.11.2.5.nupkg.sha512",
         "avalonia.themes.fluent.nuspec",
         "lib/net6.0/Avalonia.Themes.Fluent.dll",
         "lib/net6.0/Avalonia.Themes.Fluent.xml",
@@ -2416,6 +2488,8 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "Avalonia.Headless.Xunit >= 11.2.5",
+      "Avalonia.Themes.Fluent >= 11.2.5",
       "Microsoft.NET.Test.Sdk >= 17.12.0",
       "UniversityManagement >= 1.0.0",
       "coverlet.collector >= 6.0.2",
@@ -2470,6 +2544,14 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
+          "Avalonia.Headless.Xunit": {
+            "target": "Package",
+            "version": "[11.2.5, )"
+          },
+          "Avalonia.Themes.Fluent": {
+            "target": "Package",
+            "version": "[11.2.5, )"
+          },
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[17.12.0, )"
