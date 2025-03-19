@@ -56,6 +56,19 @@
                 <DockPanel Grid.Column="1" Margin="10,0,0,0">
                     <TextBlock DockPanel.Dock="Top" Text="Enrolled Subjects" FontWeight="Bold" Margin="0,0,0,10"/>
                     
+                    <!-- Drop Subject Confirmation Message -->
+                    <Border DockPanel.Dock="Top"
+                            Background="#FF5722" 
+                            Padding="10"
+                            CornerRadius="5"
+                            Margin="0,0,0,10"
+                            IsVisible="{Binding ShowDropMessage}">
+                        <TextBlock Text="{Binding DropMessage}" 
+                                   Foreground="White"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"/>
+                    </Border>
+                    
                     <Border DockPanel.Dock="Bottom" 
                             BorderBrush="Gray" 
                             BorderThickness="1" 

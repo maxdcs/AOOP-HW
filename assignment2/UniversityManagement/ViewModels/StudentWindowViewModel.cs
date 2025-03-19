@@ -38,6 +38,14 @@ namespace UniversityManagement.ViewModels
     [ObservableProperty]
     private bool showEnrollmentMessage = false;
 
+    [ObservableProperty]
+    private string dropMessage = string.Empty;
+
+    [ObservableProperty]
+    private bool showDropMessage = false;
+
+
+
     public StudentWindowViewModel()
     {
       Current = this;
@@ -95,6 +103,13 @@ namespace UniversityManagement.ViewModels
         return;
 
       sharedSubjectManager.RemoveSubjectFromStudent(TemplateStudent.Id, subject.Id);
+
+      // Set confirmation message
+      DropMessage = $"Successfully dropped {subject.Name}!";
+      ShowDropMessage = true;
+
+      // Hide message after 3 seconds
+      Task.Delay(3000).ContinueWith(_ => ShowDropMessage = false);
 
       // Refresh both lists
       LoadSubjects();
