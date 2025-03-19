@@ -79,7 +79,6 @@ dotnet test
 - **Test_GetEnrolledSubjectsByStudentId_ReturnsEnrolledSubjects**  
   Verifies that `GetEnrolledSubjectsByStudentId` returns the correct subjects in which a student is enrolled.
 
----
 ## Functional Testing
 
 ### Authentication System
