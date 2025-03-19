@@ -26,7 +26,7 @@ This application is developed using Avalonia UI and .NET, implementing an MVVM a
 dotnet run
 ```
 
-4. Login with provided credentials:
+4. Login with provided credentials (Also provided in the login page for easy reference):
    - Teacher: username: `janedoe123`, password: `123`
    - Student: username: `johnsmith`, password: `123`
 
@@ -79,6 +79,10 @@ dotnet run
   - Verification: Subject list filters in real-time
 
 ### System-Level Features
+
+- **Login Test**: Login validation works for both Student and Teacher roles.
+  - Test: Run the app, login with wrong data, or correct data, for both provided accounts
+  - Verification: Wrong credentials cause an unauthorized error, correct ones progress into either the appropriate Student or Teacher view.
 
 - **Data Persistence**: All changes are properly saved to JSON files.
   - Test: Make changes, close and reopen application
