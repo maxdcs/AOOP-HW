@@ -30,7 +30,58 @@ dotnet run
    - Teacher: username: `janedoe123`, password: `123`
    - Student: username: `johnsmith`, password: `123`
 
-## Features & Functional Testing
+## Automated Unit Testing & Functional Testing
+
+## Running the automated tests
+
+Automated tests can be run using by navigating to the `assignment2/` folder and running the command:
+```
+dotnet run
+```
+# UserManager Tests
+
+- **Test_GetAllTeachers_ReturnsTeachers**  
+  Verifies that the `GetAllTeachers()` method returns only users with a "Teacher" role.
+
+- **Test_GetAllStudents_ReturnsStudents**  
+  Verifies that the `GetAllStudents()` method returns only users with a "Student" role.
+
+- **Test_AuthenticateUser**  
+  Tests user authentication with:
+  - Valid teacher credentials (e.g., Username: `janedoe123`, Password: `123`)
+  - Valid student credentials (e.g., Username: `johnsmith`, Password: `123`)
+  - Invalid credentials and empty inputs.
+
+- **Test_GetTeacherById_ReturnsCorrectTeacher**  
+  Checks that given a teacher's ID, the correct teacher object is returned.
+
+- **Test_GetStudentById_ReturnsCorrectStudent**  
+  Checks that given a student's ID, the correct student object is returned.
+
+# SubjectManager Tests
+
+- **Test_CreateAndAddNewSubject_AddsSubject**  
+  Validates that a new subject is created and added to the subject list when invoking `CreateAndAddNewSubject`.
+
+- **Test_EditSubjectById_UpdatesSubject**  
+  Verifies that the subject data is updated correctly via the `EditSubjectById` method.
+
+- **Test_DeleteSubjectById_RemovesSubject**  
+  Ensures that a subject is removed from the list when `DeleteSubjectById` is called.
+
+- **Test_EnrollStudentInSubjectId_AddsStudentToSubject**  
+  Confirms that enrolling a student in a subject (using `EnrollStudentInSubjectId`) correctly adds the student's ID to the subject's enrolled list.
+
+- **Test_RemoveSubjectFromStudent_RemovesStudentFromSubject**  
+  Checks that a student is removed from the subject’s enrollment list when `RemoveSubjectFromStudent` is called.
+
+- **Test_GetCreatedSubjectsByTeacherId_ReturnsTeacherSubjects**  
+  Validates that `GetCreatedSubjectsByTeacherId` returns only the subjects created by a specific teacher.
+
+- **Test_GetEnrolledSubjectsByStudentId_ReturnsEnrolledSubjects**  
+  Verifies that `GetEnrolledSubjectsByStudentId` returns the correct subjects in which a student is enrolled.
+
+---
 
 ### Authentication System
 
@@ -88,10 +139,4 @@ dotnet run
   - Test: Make changes, close and reopen application
   - Verification: All changes persist between application sessions
 
-## Testing the Application
 
-Automated tests can be run using the test project included in the solution. The tests cover:
-- Constructor tests for all main classes
-- Subject management operations
-- Student enrollment operations
-- Teacher subject creation/editing/deletion
