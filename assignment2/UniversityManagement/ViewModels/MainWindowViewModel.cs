@@ -17,6 +17,16 @@ public partial class MainWindowViewModel : ViewModelBase
   [ObservableProperty]
   public Teacher currentTeacher = new Teacher("Jane Doe", "janedoe123", "123");
 
+  // Add this property under the currentTeacher property
+  [ObservableProperty]
+  public Student currentStudent = new Student("John Smith", "johnsmith", "123");
+
+  [RelayCommand]
+  private void OpenStudentWindow()
+  {
+    new StudentWindow().Show();
+  }
+
   public MainWindowViewModel()
   {
     Instance = this;

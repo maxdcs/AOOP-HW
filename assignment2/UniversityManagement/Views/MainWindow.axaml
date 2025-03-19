@@ -19,6 +19,9 @@
       <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
       <Button Content="Open Teacher Window"
         Command="{Binding OpenTeacherWindowCommand}" />
+        <Button Content="Open Student Window"
+        Command="{Binding OpenStudentWindowCommand}"
+        Margin="0,10,0,0" />
     </StackPanel>
 
 </Window>
