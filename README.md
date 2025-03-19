@@ -32,8 +32,6 @@ dotnet run
 
 ## Automated Unit Testing & Functional Testing
 
-## Running the automated tests
-
 Automated tests can be run using by navigating to the `assignment2/` folder and running the command:
 ```
 dotnet run
